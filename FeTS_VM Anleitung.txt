@@ -1,0 +1,42 @@
+###################################
+	FeTS - Miniprojekt 
+###################################
+
+DB Cluster mit Cockroach in 2 Ubuntu VMs starten
+///////////////////////////////////
+
+Ports von Cockroach - Müssen freigegeben sein
+WebInterface: Port 8080
+Nodes: Port 26257
+
+
+1. VM Starten
+FeTS_Miniproject starten -> Host für Cockroach Server + Node 1 (IP: 10.0.2.15, acc:cedric, PW:ubuntu)
+Miniproject_Node1 starten -> Node Knoten für DB-Cluster (10.0.2.4, acc:cedric, PW:ubuntu)
+
+2. SSH Verbindung von FeTS_Miniproject zu Miniproject_Node1 erstellen um alles aus einer VM zu steuern.
+Befehl: ssh cedric@10.0.2.4
+Passwort von User cedric auf beiden VMs: ubuntu
+
+3. ClusterNodes für DB auf VM erstellen
+Node 0 erstellen in FeTS_Miniproject
+Befehl: sudo cockroach start --insecure --advertise-addr=10.0.2.15 --join=10.0.2.15,10.0.2.4 --cache=.25 --max-sql-memory=.25 --background
+
+Node 1 erstellen in Miniproject_Node1:
+Achtung mit der ssh Shell ausführen -> Befehl geht an die andere VM
+Befehl: sudo cockroach start --insecure --advertise-addr=10.0.2.4 --join=10.0.2.4,10.0.2.15 --cache=.25 --max-sql-memory=.25 --background
+
+4. Cluster auf der HostVM Starten
+Eingabe des Befehls in VM FeTS_Miniproject
+Befehl: sudo cockroach init --insecure --host=10.0.2.15
+	(--insecure Flag da sonst für jede Node noch Zertifikate erstellt werden müssten)
+
+5. SQL Shell aufrufen um Queries in die Datenbank zu schicken
+Befehl in VM FeTS_Miniproject
+Befehl: cockroach sql --insecure --host=10.0.2.15
+
+6. Aufrufen des Webinterface von Cockroach
+http://localhost:8080
+
+
+Achtung Zustand der VM Speichern, sonst müssen alle Befehle erneut ausgeführt werden bei Herunterfahren
