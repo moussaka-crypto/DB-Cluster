@@ -2,8 +2,8 @@
 
 ### 1. Connect to the CockroachDB Cluster:
 
-```bash
-cockroach sql --insecure --host=10.0.2.15:26257 --user=cedric
+`bash
+cockroach sql --insecure --host=10.0.2.15:26257 --user=cedric`
 
 ### 2. Create a Dummy Database:
 
