@@ -42,6 +42,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 -->
 
 ---
+layout: intro
 transition: fade-out
 ---
 
@@ -52,7 +53,7 @@ transition: fade-out
 
 - 🎯 **Ziele**
   - Laufendes DB-Cluster
-  - Verfügbarkeit der Daten in der DB
+  - Verfügbarkeit der Daten nach einem Ausfall
 <br>
 
 - 🪳 **CockroachDB** 
@@ -78,7 +79,11 @@ h1 {
 layout: image-right
 image: https://source.unsplash.com/collection/94734566/1920x1080
 ---
+<!--
+TODO: ADD CUSTOM IMAGES
 
+Cluster left side
+-->
 # Aufbau des Clusters
 *Initialisieren der Knoten*
 
@@ -105,17 +110,26 @@ cockroach start \
 </style>
 
 ---
-layout: image-right
+layout: image-left
 image: https://source.unsplash.com/collection/94734566/1920x1080
 ---
 
 # Aufbau des Clusters 2
 *Initialisieren des Clusters*
+<!--
+TODO: ADD CUSTOM IMAGES
 
+Cluster right side
+-->
 ```bash
 cockroach init \
 --insecure \
 --host=10.0.2.15
+
+cockroach sql 
+--insecure \ 
+--host=10.0.2.15:26257 \ 
+--user=cedric
 ```
 
 <style>
@@ -129,41 +143,40 @@ cockroach init \
   display: none;
 }
 </style>
-<br>
 
 *Ports:*
-- [WebInterface:](http://localhost:8080) 8080
-- **Nodes:** 26257
+- Web Interface: [8080](http://localhost:8080)
+- Nodes: **26257**
 
 ---
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
+layout: default
+image: https://source.unsplash.com/collection/94734566/1920x1080
 ---
-theme: default
----
+
+# Aufbau des Clusters 3
+*Datenbank mit Dummy-Einträgen erstellen*
+
+```sql {all|4-12|13-20|all} twoslash
+CREATE DATABASE dummy_db;
+USE dummy_db;
+
+CREATE TABLE dummy_table (
+   id INT PRIMARY KEY,
+   name VARCHAR(255),
+   occupation VARCHAR(255),
+   language VARCHAR(50),
+   favorite_subject VARCHAR(100),
+   semester INT
+);
+
+INSERT INTO dummy_table (id, name, occupation, language, favorite_subject, semester VALUES
+   (1, 'John Doe', 'Software Engineer', 'English', 'Computer Science', 1),
+   (2, 'Jane Smith', 'Data Analyst', 'Spanish', 'Statistics', 3),
+   (3, 'Bob Johnson', 'Student', 'French', 'Mathematics', 2),
+   (4, 'Cedric Lux', 'Student', 'German', 'Fehlertolerante Systeme', 5),
+   (5, 'Hristomir Dimov', 'Student', 'German', 'Fehlertolerante Systeme', 5),
+   (6, 'Nodirjon Tadjiev', 'Student', 'German', 'Fehlertolerante Systeme', 5)
 ```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
 ---
 preload: false
 ---
@@ -256,4 +269,4 @@ class: text-center
 
 # Learn More
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev)
