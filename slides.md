@@ -63,6 +63,10 @@ transition: fade-out
 <br>
 <br>
 
+<img src="/pictures/cockroach_db.jpg"
+     alt="cockroach DB icon"
+     style="float: left; margin-right: 10px;" />
+-----
 <style>
 h1 {
   background-color: #2B90B6;
@@ -85,6 +89,10 @@ TODO: ADD CUSTOM IMAGES
 Cluster left side
 -->
 # Aufbau des Clusters
+<img src="/pictures/multi-region_cockroachdb.png"
+     alt="cockroach DB icon"
+     style="float: left; margin-right: 10px;" />
+<br>
 *Initialisieren der Knoten*
 
 ```bash {all|5,6|2-4|all} twoslash
