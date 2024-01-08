@@ -1,5 +1,7 @@
 # Welcome to [Slidev](https://github.com/slidevjs/slidev)!
 
+https://github.com/moussaka-crypto/DB-Cluster/assets/64573585/7ee4d0e2-a823-4f38-8cb5-7a2a2dabc6a6
+
 ### Prerequisites:
 [Node.js >= 18.0](https://nodejs.org/en)
 
