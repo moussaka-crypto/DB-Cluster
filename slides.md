@@ -39,13 +39,11 @@ transition: fade-out
 # Einführung
 
 *Im Rahmen der Veranstaltung "Fehlertolerante Systeme" von Prof. Classen gibt es die Aufgabe ein laufendes Mini-Projekt zu entwickeln.*
-<br>
 
 <img src="/img/cockroach_db.jpg"
      alt="cockroach DB icon"
      style="width: 45%; float: right;" /> 
 <br>
-
 - 🎯 **Ziele**
   - Laufendes DB-Cluster
   - Verfügbarkeit der Daten nach einem Ausfall
@@ -55,6 +53,7 @@ transition: fade-out
       - verteilte SQL-Datenbank, die auf Skalierbarkeit und Zuverlässigkeit ausgelegt ist
 
 - ⚙️ **Aufbau** 
+- 🤓 **Live Demo**
 <br>
 <br>
 
@@ -81,13 +80,15 @@ image: ./img/multi-region_cockroachdb.png
 *Initialisieren der Knoten*
 <br> <br>
 
-```bash {all|5,6|2-4|all} twoslash
+```bash {all|6,8|2-4|all} twoslash
 cockroach start \ 
 --insecure \ 
---advertise-addr= 10.0.2.15 \ 
---join= 10.0.2.15,10.0.2.14 \ 
---cache=.25 \
---max-sql-memory=.25 \ 
+--advertise-addr= localhost:26257 \ 
+--join= localhost:26257,localhost:26258,localhost:26259 \ 
+# Lesen Performance
+--cache=.40 \
+# Anz. gleichzeitige Client-Verb
+--max-sql-memory=.40 \ 
 --background
 ```
 
@@ -183,5 +184,5 @@ class: text-center
 
 <img src="/img/engineering-dependability-and-fault-tolerance.png"
      alt="cockroach DB icon"
-     style="width:50%; margin-left: auto; margin-right: auto;" /> 
+     style="width:69%; margin-left: auto; margin-right: auto;" /> 
      
