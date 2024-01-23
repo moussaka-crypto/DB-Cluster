@@ -1,4 +1,4 @@
-# DB-Cluster <br> FeTS Team 2
+# DB-Cluster
 
 ### About the project:
 The goal of the project was to implement a running database cluster that could ensure data availability in the event of a failure. <br>
