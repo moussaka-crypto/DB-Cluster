@@ -1,4 +1,7 @@
 # DB-Cluster
+![Markdown](https://img.shields.io/badge/Markdown-000000.svg?logo=markdown&logoColor=white) 
+![Slidev](https://custom-icon-badges.demolab.com/badge/Slidev-43bcd1.svg?logo=sli.dev&logoColor=white)
+![Vue.js](https://img.shields.io/badge/-Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white)
 
 ### About the project:
 The goal of the project was to implement a running database cluster that could ensure data availability in the event of a failure. <br>
